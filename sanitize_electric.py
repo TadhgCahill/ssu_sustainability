@@ -29,7 +29,7 @@ def csv_to_df(filename):
     locations = df.columns[1:]  # Skip the timestamp column
     
     for location in location: #maybe not the most efficient
-        slash = location.index('/')
+        slash = location.index('/') - 1 #one before /
         location = location[:slash]
 
     units = ['kWh', 'therm', 'BTU', 'tonref', 'MBTU']
@@ -73,7 +73,7 @@ def csv_to_df(filename):
 
     if bad_data:
         for  wrong in bad_data:
-            print(wrong)
+            print(*wrong)
     return pd.DataFrame(normalized_data, columns=['time_stamp', 'location', 'energy_usage', 'electric_or_gas'])
 
 
