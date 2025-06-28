@@ -1,7 +1,6 @@
 import pandas as pd #is panda a valid module?
 import pymysql
-import sanitize_electric as electric
-import sanitize_gas as gas
+import sanitize_degree_day as degree
 #Import date and timedelta class
 # from datetime module
 from datetime import date
@@ -46,21 +45,20 @@ def push_to_sql(df, database_name):
 
     # Step 3: Insert data into the database in batches
     insert_query = f"""
-    INSERT INTO {database_name} (time_stamp, location, energy_usage, electric_or_gas)
-    VALUES (%s, %s, %s, %s)
-    """
-
-    #degree report is different
-    degree_insert = f"""
     INSERT INTO {database_name} (time_stamp, heating_usage, cooling_usage)
     VALUES (%s, %s, %s)
     """
+
+    # see if offset can be removed
+    #change the hard coding
+
+    # Define the batch size
 
     # Prepare to batch insert
     batch_data = []
 
     for index, row in df.iterrows():
-        batch_data.append((row['time_stamp'], row['location'], row['energy_usage'], row['electric_or_gas']))
+        batch_data.append((row['time_stamp'], row['heating_usage'], row['cooling_usage']))
         
         # When batch size is reached, execute the insert
         try:
@@ -94,3 +92,37 @@ def push_to_sql(df, database_name):
         if 'conn' in locals():
             conn.close()
             print("Database connection closed.")
+
+# year1 = '2024'
+# year2 = '2025'
+
+# #iterate  11, 12, 1, 2
+# #for 12: 31
+# for dec in range(4, 31):
+#     day = str(dec)
+#     if dec< 10:
+#         day = '0' + str(dec)
+#     filenameTemp = 'degreeDayReports/' + year1 + '12' + day + '.csv'
+#     df = degree.csv_to_df(filenameTemp)
+#     #push df to sql
+#     push_to_sql(df, 'temp_daily')
+
+# #for 1: 31
+# for jan in range(1, 31):
+#     day = str(jan)
+#     if jan< 10:
+#         day = '0' + str(jan)
+#     filenameTemp = 'degreeDayReports/' + year2 + '01' + day + '.csv'
+#     df = degree.csv_to_df(filenameTemp)
+#     #push df to sql
+#     push_to_sql(df, 'temp_daily')
+
+# #for 2: 11
+# for feb in range(1, 11):
+#     day = str(feb)
+#     if feb< 10:
+#         day = '0' + str(feb)
+#     filenameTemp = 'degreeDayReports/' + year2 + '02' + day + '.csv'
+#     df = degree.csv_to_df(filenameTemp)
+#     #push df to sql
+#     push_to_sql(df, 'temp_daily')

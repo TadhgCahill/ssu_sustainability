@@ -1,6 +1,12 @@
 import pandas as pd
 import re  # Import for regex handling
 
+
+
+#open file of the name 'yesterdays date'.csv
+#df = pd.read_csv(filename) 
+#df = pd.read_csv('20241111.csv')
+
 #remove hardcoding in timestamp vs ts
 def csv_to_df(filename):
     df = pd.read_csv(filename)
@@ -52,7 +58,7 @@ def csv_to_df(filename):
                     
                     if unit in units:
                         if unit == 'kWh':
-                            normalized_data.append([timestamp, location, value, is_electric])
+                            normalized_data.append([timestamp, location, value, is_gas])
                         elif unit == 'btu' or unit == 'BTU':
                             value = value * btu_to_kwh
                             normalized_data.append([timestamp, location, value, is_gas])
@@ -61,7 +67,7 @@ def csv_to_df(filename):
                             normalized_data.append([timestamp, location, value, is_gas])
                         elif unit == 'tonref':
                             value = value * unit
-                            normalized_data.append([timestamp, location, value, is_electric])
+                            normalized_data.append([timestamp, location, value, is_gas])
                     else:
                         # If the unit is not recognized, set it to 'unknown'
                         print(unit, " unknown :O")
