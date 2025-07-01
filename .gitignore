@@ -1,0 +1,4 @@
+__pycache__/
+dash_venv/
+temp_agg_df.csv
+sql_credentials.py
