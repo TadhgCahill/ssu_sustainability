@@ -1,5 +1,7 @@
 from dash import Input, Output, State, callback
 
+# this callback opens or closes the map settings mini sidebar
+
 @callback(
     Output("sidebar", "style"),
     Output("map-sidebar-btn", "style"),

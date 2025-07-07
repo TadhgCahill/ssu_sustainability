@@ -4,6 +4,9 @@ from dash import Input, Output, callback
 from datetime import datetime
 from data.csv_source import df
 
+# this callback will change the locations available for a user in the filters section based on the unit and timestamp 
+# start and end date selected
+
 @callback(
     Output('location-filter', 'options'),
     Output('location-filter', 'value'),

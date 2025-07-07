@@ -6,6 +6,8 @@ import plotly.graph_objects as go
 import numpy as np
 from datetime import datetime
 
+# this callback updates the three graphs based on the location, unit, and timestamp selected in the filters section
+
 # functions to get building center lon and lat
 def get_building_center_lon(name):
     return building_centers.get(name, (None, None))[1]
