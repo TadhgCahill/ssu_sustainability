@@ -2,6 +2,9 @@ from dash import Input, Output, State, callback
 import plotly.express as px
 from data.constants import building_timestamp_data
 
+# this callback allows the user to change the time range slider and time frequency dropdown menu
+# to update the line and bar graphs
+
 @callback(
     Output('line-graph', 'figure'),
     Output('bar-graph', 'figure'),

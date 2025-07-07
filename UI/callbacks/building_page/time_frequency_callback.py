@@ -1,6 +1,8 @@
 from dash import Input, Output, State, callback
 from data.constants import building_timestamp_data
 
+# this callback will change the frequency of time on the graphs based on what is selected by the time frequency dropdown menu
+
 @callback(
     Output('time-range-slider', 'min'),
     Output('time-range-slider', 'max'),
