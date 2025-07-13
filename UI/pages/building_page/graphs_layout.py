@@ -27,9 +27,8 @@ def graphs_layout(building_name, frequency='daily'):
     # dash components wrapper
     return html.Div([
         html.Div([
-            
-            dcc.Graph(id='line-graph'),
-            dcc.Graph(id='bar-graph')
+            dcc.Graph(id='bar-graph'),
+            dcc.Graph(id='line-graph')
 
         ], style={'padding': '20px'})
     ])

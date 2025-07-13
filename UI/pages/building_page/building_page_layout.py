@@ -28,18 +28,18 @@ def layout(building_name):
             html.Div(filters_layout(display_name), id='filters-bar', style={
                 'flex' : '1', 
                 'padding' : '10px', 
-                'backgroundColor' : "#7A0D3E",
+                'backgroundColor' : "#1B1B1B",
             }),
 
             html.Div(graphs_layout(display_name), id='graphs-section', style={
                 'flex': '2',
                 'padding': '10px',
-                'backgroundColor': "#43A927",
+                'backgroundColor': "#20212A",
             }),
         ], 
         style={
             'display' : 'flex', 
-            'flexDirection' : 'row', 
+            'flexDirection' : 'column', 
             'width' : '100%',
             'height' :'100%'
         }),

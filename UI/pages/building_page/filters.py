@@ -1,6 +1,6 @@
 from dash import html, dcc
 
-from data.constants import (building_timestamp_data)
+from data.constants import building_timestamp_data
 
 def filters_layout(building_name, frequency="daily"):
 
@@ -19,8 +19,10 @@ def filters_layout(building_name, frequency="daily"):
         ],
         value=frequency,
         clearable=False,
-        style={'width': '50%'}
-    )
+        style={'width': '100%',
+            'color' : "#000000",
+            'marginBottom' : '18px'      
+        })
 
     # range slider component
     range_slider = dcc.RangeSlider(
@@ -30,7 +32,8 @@ def filters_layout(building_name, frequency="daily"):
         value=[slider_data['min_index'], slider_data['max_index']],
         marks=slider_data['marks'],
         tooltip={"placement": "bottom", "always_visible": False},
-        allowCross=False
+        allowCross=False,
+        step=1
     )
 
     # filters section
@@ -39,19 +42,26 @@ def filters_layout(building_name, frequency="daily"):
 
         html.Div([
             html.Div([
-                html.Label("Time Frequency", style={'fontWeight': 'bold'}),
-                frequency_dropdown,
-
-                html.Label(
-                    "Timeframe", 
-                    style={'fontWeight': 'bold', 
-                        'fontSize': '18px', 
-                        'marginBottom': '5px'}
-                ),
-                range_slider
+                html.Label("Time Frequency", 
+                            style={'fontWeight': 'bold',
+                                'fontSize': '18px',
+                            }),
+                html.Div(frequency_dropdown, 
+                            style={
+                                'display': 'flex',
+                                'justifyContent': 'center',
+                            }),
+                html.Label("Timeframe", 
+                            style={'fontWeight': 'bold', 
+                                'fontSize': '18px', 
+                                'marginBottom': '5px'}
+                            ),
+                            range_slider
                 
-            ], style={'width': '85%', 'textAlign': 'center'})
-        ], style={
+            ], 
+            style={'width': '100%', 'textAlign': 'center'})
+        ], 
+        style={
             'display': 'flex',
             'flexDirection': 'row',
             'alignItems': 'center',
@@ -60,7 +70,7 @@ def filters_layout(building_name, frequency="daily"):
     ],
     style={
         'fontFamily': '"Manrope", "Inter", "Segoe UI", sans-serif',
-        'fontSize': '16px'
+        'fontSize': '16px',
     })
 
     return filters
