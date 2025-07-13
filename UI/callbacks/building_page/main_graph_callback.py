@@ -31,16 +31,16 @@ def update_building_graphs(slider_range, selected_frequency, pathname):
     df_filtered.columns = ['Date', 'Energy']
 
     # line graph
-    line_fig = px.line(df_filtered, x='Date', y='Energy', title=f"{building_key} Energy Usage Over Time")
+    line_fig = px.line(df_filtered, x='Date', y='Energy', title=f"{building_key} {selected_frequency} Energy Usage")
 
     # bar graph
-    bar_fig = px.bar(df_filtered, x='Date', y='Energy', title=f"{building_key} Energy Usage Distribution")
+    bar_fig = px.bar(df_filtered, x='Date', y='Energy', title=f"{building_key} {selected_frequency} Energy Usage")
 
     for fig in [line_fig, bar_fig]:
         fig.update_layout(
             template='plotly_dark',
-            paper_bgcolor="#AEB622",
-            plot_bgcolor="#C32FA8",
+            paper_bgcolor="#1A1A1A",
+            plot_bgcolor="#272936",
             font=dict(color='white'),
             margin=dict(t=40, l=20, r=20, b=20)
         )
