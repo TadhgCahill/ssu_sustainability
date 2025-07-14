@@ -35,20 +35,62 @@ graphs = html.Div([
             'backgroundColor' : "#242430"
         }),
 
-        # map settings button and graph1 
+        # map container 
         html.Div([
-        html.Button("Map Settings", id="map-sidebar-btn", n_clicks=0, style={
-            'position': 'absolute',
-            'top': '10px',
-            'left': '10px',
-            'height': '40px',
-            'backgroundColor': "#2a3f5c",
-            'color': 'white',
-            'cursor': 'pointer',
-            'boxShadow': '0 2px 6px rgba(0,0,0,0.3)',
-            'zIndex': '10'
-        }),
-        graph1
+
+            # map settings button
+            html.Button("Map Settings", id="map-sidebar-btn", n_clicks=0, style={
+                'position': 'absolute',
+                'top': '10px',
+                'left': '10px',
+                'height': '40px',
+                'backgroundColor': "#2a3f5c",
+                'color': 'white',
+                'cursor': 'pointer',
+                'boxShadow': '0 2px 6px rgba(0,0,0,0.3)',
+                'zIndex': '10'
+            }),
+
+            # guide button
+            html.Button("Guide Placeholder", id="map-guide-btn", n_clicks=0, style={
+                'position' : 'absolute',
+                'top' : '10px',
+                'right' : '110px',
+                'height' : '40px',
+                'backgroundColor' : "#198e5b",
+                'color' : 'white', 
+                'cursor' : 'pointer', 
+                'boxShadow': '0 2px 6px rgba(0,0,0,0.3)',                
+                'zIndex': '10'
+            }),
+            
+            # map
+            graph1,
+
+            # map guide information
+            html.Div([
+                # guide
+                html.Label("Guide", style={'color': 'white', 'fontWeight': 'bold'}),
+                
+                # 'X' Button
+                html.Button("X", id="close-guide-btn", style={
+                    'right' : '10px',
+                    'top' : '10px',
+                    'backgroundColor' : "#b5cf1f",
+                    'position' : 'absolute'
+                })
+            ], id = "guide", style={
+                'position': 'absolute',
+                'top': '60px',
+                'right': '10px',
+                'width': '250px',
+                'padding': '15px',
+                'backgroundColor': "#3A219F",
+                'color': 'white',
+                'borderRadius': '8px',
+                'boxShadow': '0 2px 10px rgba(0, 0, 0, 0.3)'
+            })
+
         ], style={
             'position': 'relative',
             'flex': 1,
