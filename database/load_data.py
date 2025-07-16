@@ -1,7 +1,7 @@
 import pandas as pd #is panda a valid module?
 import pymysql
-import sanitize_electric as electric
-import sanitize_gas as gas
+#import sanitize_electric as electric
+#import sanitize_gas as gas
 #Import date and timedelta class
 # from datetime module
 from datetime import date

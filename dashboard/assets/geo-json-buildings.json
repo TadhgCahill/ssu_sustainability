@@ -42,7 +42,8 @@
             "properties" : {
                 "id" : "Ives Hall",
                 "center_lon" : -122.67339373862295, 
-                "center_lat" : 38.33932808389069 
+                "center_lat" : 38.33932808389069
+
             }
         }, 
         {
@@ -62,7 +63,7 @@
             "properties" : {
                 "id" : "Nichols Hall",
                 "center_lon" : -122.67650268325632, 
-                "center_lat" : 38.34132375182814 
+                "center_lat" : 38.34132375182814
             }
         },
         {
@@ -88,7 +89,7 @@
             "properties" : {
                 "id" : "Physical Education",
                 "center_lon" : -122.67201007202415, 
-                "center_lat" : 38.340995903373226 
+                "center_lat" : 38.340995903373226
             }
         },
         {
@@ -112,7 +113,7 @@
             "properties" : {
                 "id" : "Rachel Carson Hall",
                 "center_lon" : -122.67671872863805, 
-                "center_lat" : 38.34168385276396 
+                "center_lat" : 38.34168385276396
             }
         },
         {
@@ -190,7 +191,7 @@
             "properties" : {
                 "id" : "Wine Spectator Center",
                 "center_lon" : -122.67368776394262, 
-                "center_lat" : 38.341605965106126 
+                "center_lat" : 38.341605965106126
             }
         }
     ]

@@ -7,6 +7,7 @@ import callbacks.homepage.location_filter_callback
 import callbacks.homepage.marker_redirect_callback
 import callbacks.homepage.map_guide_callback
 
+
 # building page callbacks
 import callbacks.building_page.time_frequency_callback
 import callbacks.building_page.main_graph_callback
