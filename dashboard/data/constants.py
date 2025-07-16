@@ -84,7 +84,7 @@ default_max_timestamp = len(timestamp_options) - 1
 
 ##################################################################################################
 # load building GeoJSON file
-with open('assets/geo-json-buildings.json', 'r') as file:
+with open('dashboard/assets/geo-json-buildings.json', 'r') as file:
     geo_json_buildings = json.load(file)
 
 # get lon and lat of building centers from geojson file

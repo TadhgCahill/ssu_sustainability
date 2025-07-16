@@ -26,6 +26,16 @@ graphs = html.Div([
                 value='choropleth',
                 labelStyle={'display' : 'block'},
                 style={'marginBottom': '10px'}
+            ),
+
+            html.Label("Map Layers", style={'color' : 'white', 'marginTop' : '15px'}),
+            dcc.Checklist(
+                id='map-layer-toggles',
+                options=[{'label': 'Campus Outline', 'value': 'show_outline'},
+                         {'label' : 'Campus Name', 'value' : 'show_name'}],
+                value=['show_outline', 'show_name'],
+                style={'color': 'white'},
+                labelStyle={'display' : 'block'}
             )
         ], id="sidebar", style={
             'position' : 'relative',
@@ -52,16 +62,20 @@ graphs = html.Div([
             }),
 
             # guide button
-            html.Button("Guide Placeholder", id="map-guide-btn", n_clicks=0, style={
+            html.Button(
+                html.Img(src='/assets/info-icon.png', style={'height': '24px', 'width': '24px'}),
+                id="map-guide-btn", n_clicks=0, style={
                 'position' : 'absolute',
                 'top' : '10px',
                 'right' : '110px',
                 'height' : '40px',
-                'backgroundColor' : "#198e5b",
-                'color' : 'white', 
+                'width' : '40px',
+                'padding' : '0',
                 'cursor' : 'pointer', 
-                'boxShadow': '0 2px 6px rgba(0,0,0,0.3)',                
-                'zIndex': '10'
+                'zIndex': '10',
+                'border': 'none',
+                'background': 'none',
+                'boxShadow': 'none',
             }),
             
             # map
@@ -70,22 +84,47 @@ graphs = html.Div([
             # map guide information
             html.Div([
                 # guide
-                html.Label("Guide", style={'color': 'white', 'fontWeight': 'bold'}),
+                html.Label("Guide", style={'color': 'white', 'fontWeight': 'bold', 'fontSize' : '19px'}),
                 
+                # guide content will be updated by callback
+                html.Div(id='guide-content', style={'marginTop': '10px', 'fontSize' : '17px'}),
+
+                # navigation arrows
+                html.Div([
+                    html.Button("←", id='guide-prev', n_clicks=0, style={
+                        'marginRight': '10px',
+                        'backgroundColor': '#173d6e',
+                        'color': 'white',
+                        'border': 'none',
+                        'cursor': 'pointer'
+                    }),
+                    html.Button("→", id='guide-next', n_clicks=0, style={
+                        'backgroundColor': '#173d6e',
+                        'color': 'white',
+                        'border': 'none',
+                        'cursor': 'pointer'
+                    }),
+                ], style={'marginTop': '15px'}),
+
                 # 'X' Button
                 html.Button("X", id="close-guide-btn", style={
                     'right' : '10px',
                     'top' : '10px',
-                    'backgroundColor' : "#b5cf1f",
-                    'position' : 'absolute'
-                })
+                    'backgroundColor' : "#173d6e",
+                    'position' : 'absolute',
+                    'color' : 'white'
+                }),
+
+                # keeping track of page
+                dcc.Store(id='guide-page', data=0)
+
             ], id = "guide", style={
                 'position': 'absolute',
                 'top': '60px',
                 'right': '10px',
                 'width': '250px',
                 'padding': '15px',
-                'backgroundColor': "#3A219F",
+                'backgroundColor': "#5484D2",
                 'color': 'white',
                 'borderRadius': '8px',
                 'boxShadow': '0 2px 10px rgba(0, 0, 0, 0.3)'

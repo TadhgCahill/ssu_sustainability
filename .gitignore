@@ -1,5 +1,37 @@
+# ########################
+#  Python
+# ########################
 __pycache__/
-dash_venv/
-temp_agg_df.csv
-sql_credentials.py
 *.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+.env/
+.venv/
+env/
+venv/
+
+
+# ########################
+#  Project-Specific
+# ########################
+
+# Ignore all generated data and logs
+/output/
+/logs/
+
+# Ignore the local test database
+/database/local_test_db.sqlite
+
+# Ignore temporary CSVs created by the dashboard
+/dashboard/temp_agg_df.csv
+
+
+# ########################
+#  IDE / Editor
+# ########################
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
