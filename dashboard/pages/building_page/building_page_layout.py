@@ -12,14 +12,30 @@ def layout(building_name):
 
     layout = html.Div([
 
-        # title bar
-        html.H1(f"Energy Usage for {display_name}", style={
-                'fontFamily': '"Orbitron", "Segoe UI", sans-serif',
-                'textAlign': 'left',
-                'marginLeft': '50px',  
-                'marginTop': '0px',
-                'marginBottom': '10px',
-        }),
+        # title bar with back button
+        html.Div([
+            dcc.Link("← Back to Home", href='/', style={
+                'marginLeft': '50px',
+                'alignSelf': 'center',
+                'fontSize': '18px',
+                'color': 'white',
+                'textDecoration': 'none',
+                'cursor': 'pointer',
+                'padding': '8px 12px',
+                'backgroundColor': "#353660",
+                'borderRadius': '5px',
+                'display': 'inline-block',
+                'marginBottom' : '8px'
+            }),
+
+            html.H1(f"Energy Usage for {display_name}", style={
+                    'fontFamily': '"Orbitron", "Segoe UI", sans-serif',
+                    'textAlign': 'left',
+                    'marginLeft': '50px',  
+                    'marginTop': '0px',
+                    'marginBottom': '10px',
+            })
+        ]),
 
         # top bar to hold timeframe slider and units checklist
         html.Div([
