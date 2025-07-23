@@ -9,7 +9,7 @@ from dash import callback, Input, Output, State
 def update_sidebar_style(is_collapsed):
     base_style = {
         'padding': '10px',
-        'backgroundColor': '#f8f9fa',
+        'backgroundColor': '#2a3f5c',
         'position': 'relative',
         'height': '100%',
         'overflow': 'hidden',

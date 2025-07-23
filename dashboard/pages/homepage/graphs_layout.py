@@ -102,7 +102,7 @@ graphs = html.Div([
     ], id='main-map', style={
         'flex': '1 1 auto', 
         'padding': '10px',
-        'backgroundColor': "#61C81D",
+        'backgroundColor': '#2a3f5c',
         'color': 'white',
         'minWidth': '0', 
         'display': 'flex',
