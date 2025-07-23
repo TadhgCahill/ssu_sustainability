@@ -87,55 +87,6 @@ graphs = html.Div([
                 'minWidth': 0,
                 'display': 'flex',
                 'postion' : 'relative'
-            }),
-
-            # map guide information
-            html.Div([
-                # guide
-                html.Label("Guide", style={'color': 'white', 'fontWeight': 'bold', 'fontSize' : '19px'}),
-                
-                # guide content will be updated by callback
-                html.Div(id='guide-content', style={'marginTop': '10px', 'fontSize' : '17px'}),
-
-                # navigation arrows
-                html.Div([
-                    html.Button("←", id='guide-prev', n_clicks=0, style={
-                        'marginRight': '10px',
-                        'backgroundColor': '#173d6e',
-                        'color': 'white',
-                        'border': 'none',
-                        'cursor': 'pointer'
-                    }),
-                    html.Button("→", id='guide-next', n_clicks=0, style={
-                        'backgroundColor': '#173d6e',
-                        'color': 'white',
-                        'border': 'none',
-                        'cursor': 'pointer'
-                    }),
-                ], style={'marginTop': '15px'}),
-
-                # 'X' Button
-                html.Button("X", id="close-guide-btn", style={
-                    'right' : '10px',
-                    'top' : '10px',
-                    'backgroundColor' : "#173d6e",
-                    'position' : 'absolute',
-                    'color' : 'white'
-                }),
-
-                # keeping track of page
-                dcc.Store(id='guide-page', data=0)
-
-            ], id = "guide", style={
-                'position': 'absolute',
-                'bottom': '60px',
-                'left': '10px',
-                'width': '250px',
-                'padding': '15px',
-                'backgroundColor': "#5484D2",
-                'color': 'white',
-                'borderRadius': '8px',
-                'boxShadow': '0 2px 10px rgba(0, 0, 0, 0.3)'
             })
 
         ], style={

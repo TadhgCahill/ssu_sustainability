@@ -1,4 +1,4 @@
-from dash import html, register_page
+from dash import html, register_page, dcc
 
 # layout imports
 from pages.homepage.graphs_layout import graphs
@@ -41,6 +41,56 @@ layout = html.Div([
             'flexDirection': 'column',
             'height': '100%',
             'overflow' : 'hidden'
+        }),
+
+        # map guide information
+        html.Div([
+            # guide
+            html.Label("Guide", style={'color': 'white', 'fontWeight': 'bold', 'fontSize' : '19px'}),
+            
+            # guide content will be updated by callback
+            html.Div(id='guide-content', style={'marginTop': '10px', 'fontSize' : '17px'}),
+
+            # navigation arrows
+            html.Div([
+                html.Button("←", id='guide-prev', n_clicks=0, disabled=True, style={
+                    'marginRight': '10px',
+                    'backgroundColor': '#173d6e',
+                    'color': 'white',
+                    'border': 'none',
+                    'cursor': 'pointer'
+                }),
+                html.Button("→", id='guide-next', n_clicks=0, style={
+                    'backgroundColor': '#173d6e',
+                    'color': 'white',
+                    'border': 'none',
+                    'cursor': 'pointer'
+                }),
+            ], style={'marginTop': '15px'}),
+
+            # 'X' Button
+            html.Button("X", id="close-guide-btn", style={
+                'right' : '10px',
+                'top' : '10px',
+                'backgroundColor' : "#173d6e",
+                'position' : 'absolute',
+                'color' : 'white'
+            }),
+
+            # keeping track of page
+            dcc.Store(id='guide-page', data=-1)
+
+        ], id = "guide", style={
+            'position': 'absolute',
+            'bottom': '60px',
+            'left': '10px',
+            'width': '250px',
+            'padding': '15px',
+            'backgroundColor': "#5484D2",
+            'color': 'white',
+            'borderRadius': '8px',
+            'boxShadow': '0 2px 10px rgba(0, 0, 0, 0.3)',
+            'display' : 'none'
         })
 
     ], 
@@ -52,6 +102,63 @@ layout = html.Div([
         'minHeight' : '0',
         'overflow' : 'hidden'
     }),
+
+    # welcome overlay
+    html.Div(
+        id='welcome-overlay',
+        children=[
+            html.Div(
+                [
+                    html.P(
+                        "Welcome to the energy usage dashboard! "
+                        "To follow the guided tutorial, use the arrows to navigate. "
+                        "To exit, press 'X'.",
+                        style={'fontSize': '20px', 'textAlign': 'center', 'color': 'white', 'marginBottom': '20px'}
+                    ),
+                    html.Div(
+                        [
+                            html.Button("→", id='welcome-guide-next', n_clicks=0, style={
+                                'backgroundColor': '#173d6e',
+                                'color': 'white',
+                                'border': 'none',
+                                'cursor': 'pointer'
+                            }),
+                            html.Button("X", id='welcome-close-guide-btn', n_clicks=0, style={
+                                'marginLeft': '10px',
+                                'backgroundColor': '#a83232',
+                                'color': 'white',
+                                'border': 'none',
+                                'cursor': 'pointer',
+                                'padding': '0 10px',
+                                'fontWeight': 'bold',
+                            }),
+                        ],
+                        style={'display': 'flex', 'justifyContent': 'center', 'gap': '15px'}
+                    )
+                ],
+                style={
+                    'backgroundColor': '#5484D2',
+                    'padding': '30px',
+                    'borderRadius': '10px',
+                    'maxWidth': '400px',
+                    'textAlign': 'center',
+                    'boxShadow': '0 0 20px rgba(0,0,0,0.5)'
+                }
+            )
+        ],
+        style={
+            'position': 'fixed',
+            'top': 0,
+            'left': 0,
+            'width': '100vw',
+            'height': '100vh',
+            'backgroundColor': 'rgba(0, 0, 0, 0.7)',
+            'display': 'flex',
+            'justifyContent': 'center',
+            'alignItems': 'center',
+            'zIndex': 9999,
+        }
+    ),
 
     # bottom border 
     html.Div(style={
@@ -68,4 +175,5 @@ style={
     'margin': '0',
     'padding': '0',
     'overflow': 'hidden',
+    'position' : 'relative'
 })
