@@ -12,7 +12,7 @@ from dash import Input, Output, State, callback
 def toggle_sidebar(n_clicks, sidebar_style):
     base_sidebar_style = {
         'position': 'absolute',
-        'top': '80px',
+        'top': '10px',
         #'left': '180px',
         'padding': '10px',
         'backgroundColor': "#353539",

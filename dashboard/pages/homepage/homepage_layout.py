@@ -25,7 +25,7 @@ layout = html.Div([
             'flex' : '1', 
             'padding' : '10px', 
             'backgroundColor' : "#1B1B1B",
-            'height' : '97.7vh',
+            'height' : '100%',
             'overflowY' : 'auto'
             
         }),
@@ -36,6 +36,11 @@ layout = html.Div([
             'padding' : '10px', 
             'backgroundColor' : "#20212A", 
             'color' : 'white',
+            'minWidth': '0',
+            'display': 'flex',
+            'flexDirection': 'column',
+            'height': '100%',
+            'overflow' : 'hidden'
         })
 
     ], 
@@ -43,7 +48,9 @@ layout = html.Div([
         'display' : 'flex', 
         'flexDirection' : 'row', 
         'width' : '100%',
-        'height' :'100%'
+        'flex' :'1 1 auto',
+        'minHeight' : '0',
+        'overflow' : 'hidden'
     }),
 
     # bottom border 
@@ -55,6 +62,10 @@ layout = html.Div([
 style={
     'backgroundColor': "#274377",  
     'color': 'white',    
-    'minHeight': '100vh',
+    'height': '100vh',
+    'display': 'flex', 
+    'flexDirection': 'column',
+    'margin': '0',
+    'padding': '0',
+    'overflow': 'hidden',
 })
-

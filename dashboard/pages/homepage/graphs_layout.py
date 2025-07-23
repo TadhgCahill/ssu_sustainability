@@ -38,7 +38,7 @@ graphs = html.Div([
                 labelStyle={'display' : 'block'}
             )
         ], id="sidebar", style={
-            'position' : 'relative',
+            'position' : 'absolute',
             'width': '0px', 
             'padding': '0px',
             'opacity': '0',
@@ -66,8 +66,8 @@ graphs = html.Div([
                 html.Img(src='/assets/info-icon.png', style={'height': '24px', 'width': '24px'}),
                 id="map-guide-btn", n_clicks=0, style={
                 'position' : 'absolute',
-                'top' : '10px',
-                'right' : '110px',
+                'bottom' : '21px',
+                'left' : '0px',
                 'height' : '40px',
                 'width' : '40px',
                 'padding' : '0',
@@ -79,7 +79,15 @@ graphs = html.Div([
             }),
             
             # map
-            graph1,
+            html.Div([
+                graph1
+            ], style={
+                'flex': '1',
+                'minHeight': 0,
+                'minWidth': 0,
+                'display': 'flex',
+                'postion' : 'relative'
+            }),
 
             # map guide information
             html.Div([
@@ -120,8 +128,8 @@ graphs = html.Div([
 
             ], id = "guide", style={
                 'position': 'absolute',
-                'top': '60px',
-                'right': '10px',
+                'bottom': '60px',
+                'left': '10px',
                 'width': '250px',
                 'padding': '15px',
                 'backgroundColor': "#5484D2",
@@ -133,39 +141,61 @@ graphs = html.Div([
         ], style={
             'position': 'relative',
             'flex': 1,
-            'minWidth': 0
+            'minHeight' : 0,
+            'minWidth': 0,
+            'height': '100%',      
+            'display': 'flex',     
+            'flexDirection': 'column'
         })
 
-    ], style={
-        'gridArea': 'graph1',
+    ], id='main-map', style={
+        'flex': '1 1 auto', 
+        'padding': '10px',
+        'backgroundColor': "#61C81D",
+        'color': 'white',
+        'minWidth': '0', 
         'display': 'flex',
-        'flexDirection': 'row',
-        'gap': '10px'
+        'flexDirection': 'column',
+        'height' : '100%',
+        'minHeight' : '0'
     }),
     
+    # collapsible sidebar container for graph2 and graph3
+    html.Div([
 
-    # graph 2
-    html.Div(
-        html.Div(graph2, style={'height': '100%'}),
-        style={'gridArea': 'graph2',
-               'height' : '100%'}
-    ),
+        # graph2 + graph3 in column
+        html.Div([
+                html.Div(graph2, style={'height': '100%'}),
+                html.Div(graph3, style={'height': '100%'})
+        ], id='sidebar-graphs-inner', style={
+            'display': 'flex',
+            'flexDirection': 'column',
+            'gap': '10px',
+            'width': '100%',
+            'height' : '100%'
+        }),
 
-    # graph 3
-    html.Div(
-        html.Div(graph3, style={'height': '100%'} ),
-        style={'gridArea': 'graph3',
-               'height' : '100%'}
-    ),
+        # hidden store to track open/close state
+        dcc.Store(id='collapse-state', data=False)
+
+    ], id='sidebar-wrapper', style={
+        'flex': '0 0 300px',  
+        'padding': '10px',
+        'backgroundColor': '#f8f9fa',
+        'position': 'relative',
+        'height': '100%',
+        'overflow': 'hidden',
+        'transition': 'flex-basis 0.3s ease',
+        'minWidth': '0'
+    }),
+
+    # toggle collapse button
+    html.Button("⮞", id='collapse-button', n_clicks=1, style={})
+
 ], style={
-    'display': 'grid',
-    'gridTemplateColumns': '2fr 1fr',
-    'gridTemplateRows': '1fr 1fr',
-    'gridTemplateAreas': '''
-        "graph1 graph2"
-        "graph1 graph3"
-    ''',
-    'gap': '10px',
-    'height' : '100%'
-
+    'display': 'flex',
+    'flexDirection': 'row',
+    'height': '100%',
+    'width': '100%',
+    'position': 'relative',
 })
