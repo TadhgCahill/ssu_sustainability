@@ -110,7 +110,7 @@ layout = html.Div([
             html.Div(
                 [
                     html.P(
-                        "Welcome to the energy usage dashboard! "
+                        "Welcome to the Energy Usage Dashboard! "
                         "To follow the guided tutorial, use the arrows to navigate. "
                         "To exit, press 'X'.",
                         style={'fontSize': '20px', 'textAlign': 'center', 'color': 'white', 'marginBottom': '20px'}
@@ -137,7 +137,7 @@ layout = html.Div([
                     )
                 ],
                 style={
-                    'backgroundColor': '#5484D2',
+                    'backgroundColor': "#405D90",
                     'padding': '30px',
                     'borderRadius': '10px',
                     'maxWidth': '400px',
@@ -167,7 +167,7 @@ layout = html.Div([
     }),
 ],
 style={
-    'backgroundColor': "#274377",  
+    'backgroundColor': "#405D90",  
     'color': 'white',    
     'height': '100vh',
     'display': 'flex', 

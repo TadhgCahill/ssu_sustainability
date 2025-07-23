@@ -64,7 +64,7 @@ def control_guide(
         'left': '10px',
         'width': '250px',
         'padding': '15px',
-        'backgroundColor': "#5484D2",
+        'backgroundColor': "#405D90",
         'color': 'white',
         'borderRadius': '8px',
         'boxShadow': '0 2px 10px rgba(0, 0, 0, 0.3)',
