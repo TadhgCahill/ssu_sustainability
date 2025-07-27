@@ -126,7 +126,6 @@ def update_figure1(aggregated_df, overlay_type, show_campus_outline=True, show_c
         textposition='top center',  
         textfont=dict(
             color='white',
-            size=13,
         ),
         hoverinfo='text',
         marker=dict(color='teal', size=8)

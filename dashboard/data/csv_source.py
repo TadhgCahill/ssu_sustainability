@@ -10,7 +10,7 @@ from config.sql_credentials import SQL_CREDENTIALS
 
 # --- IMPORTANT!!! ---
 # Set this to True to use the local test DB, False to use the live production DB.
-USE_LOCAL_DB_FOR_DASHBOARD = True
+USE_LOCAL_DB_FOR_DASHBOARD = False
 
 print("=" * 50)
 print("Dashboard Data Source Configuration")
