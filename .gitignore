@@ -26,6 +26,7 @@ venv/
 
 # Ignore temporary CSVs created by the dashboard
 /dashboard/temp_agg_df.csv
+/temp_agg_df.csv
 
 # config
 config/sql_credentials.py
