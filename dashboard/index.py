@@ -12,6 +12,9 @@ import callbacks.homepage.collapse_graphs_callback
 import callbacks.building_page.time_frequency_callback
 import callbacks.building_page.main_graph_callback
 
+# page startup callback
+import callbacks.startup.cycle_image_callback
+
 from dash import html, dcc, page_container
 
 #app.layout = layout

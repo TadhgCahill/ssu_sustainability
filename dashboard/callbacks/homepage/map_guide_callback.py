@@ -2,9 +2,9 @@ import dash
 from dash import Output, Input, State, callback, html
 
 GUIDE_PAGES = [
-    "FILTERS",
+    "This is the filters section. You may use it to toggle building visibility, change the unit of energy displayed, and alter the timeframe of energy usage occurred.",
     "GRAPHS",
-    "MAIN MAP",
+    "",
     "Enjoy!"
 ]
 
@@ -13,6 +13,7 @@ GUIDE_PAGES = [
     Output("welcome-overlay", "style"),
     Output("guide", "style"),
     Output("guide-page", "data"),
+    Output("dim-overlay", "style"),
     Input("map-guide-btn", "n_clicks"),
     Input("close-guide-btn", "n_clicks"),
     Input("welcome-close-guide-btn", "n_clicks"),
@@ -43,7 +44,7 @@ def control_guide(
     triggered = ctx.triggered[0]['prop_id'].split('.')[0]
     num_pages = len(GUIDE_PAGES)
 
-    # styles for visible/hidden
+    # style for darkened background behind welcome guide
     visible_welcome = {
         'position': 'fixed',
         'top': 0,
@@ -58,6 +59,7 @@ def control_guide(
     }
     hidden_welcome = {'display': 'none'}
 
+    # style for guide box visibility
     visible_guide = {
         'position': 'absolute',
         'bottom': '60px',
@@ -73,22 +75,47 @@ def control_guide(
     }
     hidden_guide = {'display': 'none'}
 
-    if triggered == "map-guide-btn":
-        # open welcome overlay first, hide guide sidebar and reset page to 0
-        return visible_welcome, hidden_guide, -1
-    elif triggered in ["close-guide-btn", "welcome-close-guide-btn"]:
-        # close both overlays (hide everything)
-        return hidden_welcome, hidden_guide, current_page
-    elif triggered == "guide-prev":
-        # hide welcome overlay, show guide, move back a page
-        return hidden_welcome, visible_guide, max(current_page - 1, 0)
-    elif triggered in ["guide-next", "welcome-guide-next"]:
-        if current_page == -1:
-            return hidden_welcome, visible_guide, 0
-        # hide welcome overlay, show guide, move forward a page
-        return hidden_welcome, visible_guide, min(current_page + 1, num_pages - 1)
+    visible_dim = {
+        'position': 'fixed',
+        'top': 0,
+        'left': 0,
+        'width': '100vw',
+        'height': '100vh',
+        'backgroundColor': 'rgba(0, 0, 0, 0.7)',
+        'pointerEvents': 'auto',
+        'zIndex': 9998,
+        'display': 'block',
+    }
+    hidden_dim = {'display': 'none'}
 
-    return welcome_style, guide_style, current_page
+    if triggered == "map-guide-btn":
+
+        # hide guide sidebar, reset page to -1
+        # show dim overlay as well to darken background
+        return visible_welcome, hidden_guide, -1, hidden_dim
+
+    elif triggered in ["close-guide-btn", "welcome-close-guide-btn"]:
+
+        # closed guide or welcome, hide all overlays and dimming
+        return hidden_welcome, hidden_guide, current_page, hidden_dim
+
+    elif triggered == "guide-prev":
+
+        new_page = max(current_page - 1, 0)
+        # show dim overlay only if on page 0 (filters)
+        return hidden_welcome, visible_guide, new_page, visible_dim if new_page == 0 else hidden_dim
+
+    elif triggered in ["guide-next", "welcome-guide-next"]:
+
+        if current_page == -1:
+            # moving from welcome to first guide page (filters)
+            return hidden_welcome, visible_guide, 0, visible_dim
+        new_page = min(current_page + 1, num_pages - 1)
+        return hidden_welcome, visible_guide, new_page, visible_dim if new_page == 0 else hidden_dim
+
+    # fallback keep existing styles, show dim overlay if current page is filters
+    return welcome_style, guide_style, current_page, visible_dim if current_page == 0 else hidden_dim
+
 
 # callback to display content
 @callback(

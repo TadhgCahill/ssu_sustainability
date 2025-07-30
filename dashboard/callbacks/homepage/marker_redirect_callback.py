@@ -24,4 +24,4 @@ def redirect_on_marker_click(clickData):
     building_name = clickData['points'][0]['customdata']
     building_name_underscores = building_name.replace(" ", "_")  # change spaces with underscores
 
-    return f"/{building_name_underscores}"
+    return f"/building/{building_name_underscores}"

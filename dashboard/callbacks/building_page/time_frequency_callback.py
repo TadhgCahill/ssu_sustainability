@@ -14,7 +14,7 @@ from data.constants import building_timestamp_data
 def update_slider_range(frequency, pathname):
 
     # get building name from pathname
-    building_key = pathname.strip('/').replace('_', ' ')
+    building_key = pathname.split("/building/")[-1].replace("_", " ")
 
     if building_key not in building_timestamp_data:
         return 0, 0, [0, 0], {}

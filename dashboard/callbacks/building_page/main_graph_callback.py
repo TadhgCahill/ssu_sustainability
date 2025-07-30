@@ -17,7 +17,7 @@ def update_building_graphs(slider_range, selected_frequency, pathname):
         return px.line(title="No Data"), px.bar(title="No Data")
 
     # convert path to building name 
-    building_key = pathname.strip("/").replace("_", " ")
+    building_key = pathname.split("/building/")[-1].replace("_", " ")
 
     building_data = building_timestamp_data.get(building_key, {}).get(selected_frequency)
     if not building_data:
