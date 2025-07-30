@@ -97,7 +97,8 @@ def update_figure1(aggregated_df, overlay_type, show_campus_outline=True, show_c
         fillcolor='rgba(0, 110, 255, 0.08)',
         line=dict(color='navy'),
         hovertext='Sonoma State University',
-        hoverinfo='text'
+        hoverinfo='text',
+        showlegend=False
     )
 
     # campus name trace 
@@ -128,7 +129,8 @@ def update_figure1(aggregated_df, overlay_type, show_campus_outline=True, show_c
             color='white',
         ),
         hoverinfo='text',
-        marker=dict(color='teal', size=8)
+        marker=dict(color='teal', size=8),
+        showlegend=False
     )
 
     # list of traces to include in figure
@@ -148,7 +150,8 @@ def update_figure1(aggregated_df, overlay_type, show_campus_outline=True, show_c
                 title="Value",
                 tickfont=dict(color='white')  
             ),
-            hovertemplate='%{z:.2f} kWh<extra></extra>'  
+            hovertemplate='%{z:.2f} kWh<extra></extra>',
+            showlegend=False
         )
 
         traces.append(choropleth_map_trace)
@@ -183,7 +186,8 @@ def update_figure1(aggregated_df, overlay_type, show_campus_outline=True, show_c
                               tickfont=dict(color='white'),
                 )
             ),
-            hoverinfo='text'
+            hoverinfo='text',
+            showlegend=False
         )
         #figure1 = go.Figure(data=[bubble_map_trace, campus_map_trace, markers_trace])
         traces.append(bubble_map_trace)

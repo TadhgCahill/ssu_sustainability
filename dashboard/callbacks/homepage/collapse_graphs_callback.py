@@ -40,7 +40,7 @@ def update_sidebar_style(is_collapsed):
                 'flex': '0 0 0px',  
                 'padding': '0px',   
             },
-            "⮜",
+            "⛶",
             {
                 **base_button_style,
                 'right': '10px'  # shift button to far right
@@ -50,13 +50,13 @@ def update_sidebar_style(is_collapsed):
         return (
             {
                 **base_style,
-                'flex': '0 0 300px',  
+                'flex': '0 0 600px',  
                 'padding': '10px'
             },
-            "⮞",
+            "-",
             {
                 **base_button_style,
-                'right': '310px'  # align with open sidebar
+                'right': '610px'  # align with open sidebar
             }
         )
 

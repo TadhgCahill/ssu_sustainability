@@ -30,7 +30,9 @@ layout = html.Div ([
     ),
     dcc.Location(id='url', refresh=True),
 
+    # speed up or slow down startup screen interval here
     dcc.Interval(id='image-interval', interval=10000, n_intervals=0),
+    #dcc.Interval(id='image-interval', interval=5000, n_intervals=0),
 
     html.Div([
         # text box

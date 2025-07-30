@@ -130,7 +130,7 @@ graphs = html.Div([
         dcc.Store(id='collapse-state', data=False)
 
     ], id='sidebar-wrapper', style={
-        'flex': '0 0 300px',  
+        'flex': '0 0 600px',  
         'padding': '10px',
         'backgroundColor': '#f8f9fa',
         'position': 'relative',
@@ -141,7 +141,7 @@ graphs = html.Div([
     }),
 
     # toggle collapse button
-    html.Button("⮞", id='collapse-button', n_clicks=1, style={})
+    html.Button("-", id='collapse-button', n_clicks=1, style={})
 
 ], style={
     'display': 'flex',

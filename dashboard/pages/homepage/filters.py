@@ -53,7 +53,20 @@ filters = html.Div([
                 'width': '110%'       
                 }
             )
-        ], style={'width': '85%', 'textAlign': 'left'})
+        ], style={'marginBottom' : '50px', 'width': '85%', 'textAlign': 'left'}),
+
+        html.Div([
+            html.H2(
+                "Mobile App", 
+                style={'fontWeight': 'bold', 
+                       'marginBottom': '5px'}
+            ),
+            html.Img(src='assets/qr_code.png', style={'height' : '220px', 'width' : '220px'})
+        ], style={
+            'marginBottom': '40px', 'width': '85%', 'textAlign': 'center'
+        }),
+        
+
     ], style={
         'display': 'flex',
         'flexDirection': 'column',
