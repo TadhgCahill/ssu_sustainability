@@ -4,7 +4,7 @@ from dash import html, register_page, dcc
 from pages.homepage.graphs_layout import graphs
 from pages.homepage.filters import filters
 
-register_page(__name__, path='/')
+register_page(__name__, path='/homepage', name='Homepage')
 
 layout = html.Div([
 
@@ -19,29 +19,36 @@ layout = html.Div([
 
     # main homepage
     html.Div([
-        
-         # filters section of main page
-        html.Div(filters, id='filters-sidebar', style={
-            'flex' : '1', 
-            'padding' : '10px', 
-            'backgroundColor' : "#1B1B1B",
-            'height' : '100%',
-            'overflowY' : 'auto'
-            
+
+        html.Div([
+            html.Div(children=filters)
+        ], 
+        id='filters-highlight',  
+        style={
+            'flex': '1',
+            'padding': '10px',
+            'backgroundColor': "#1B1B1B",
+            'height': '100%',
+            'overflowY': 'auto',
+            'position': 'relative',
+            'transition': 'filter 0.3s ease',  # smooth blur effect
+            'zIndex': 9999
         }),
 
         # graphs section of main page
-        html.Div(graphs, style={
-            'flex' : '4',
-            'padding' : '10px', 
-            'backgroundColor' : "#20212A", 
-            'color' : 'white',
-            'minWidth': '0',
-            'display': 'flex',
-            'flexDirection': 'column',
-            'height': '100%',
-            'overflow' : 'hidden'
-        }),
+        html.Div(graphs, 
+                id="graphs-section",
+                style={
+                    'flex' : '4',
+                    'padding' : '10px', 
+                    'backgroundColor' : "#20212A", 
+                    'color' : 'white',
+                    'minWidth': '0',
+                    'display': 'flex',
+                    'flexDirection': 'column',
+                    'height': '100%',
+                    'overflow' : 'hidden'
+                }),
 
         # map guide information
         html.Div([
@@ -159,6 +166,18 @@ layout = html.Div([
             'zIndex': 9999,
         }
     ),
+
+    html.Div(id='dim-overlay', style={
+        'position': 'fixed',
+        'top': 0,
+        'left': 0,
+        'width': '100vw',
+        'height': '100vh',
+        'backgroundColor': 'rgba(0, 0, 0, 0.7)',  # semi-transparent black
+        'pointerEvents': 'none',   # allows clicks to pass through to filters div
+        'zIndex': 9998,            # less than filters 
+        'display': 'none',         # initially hidden
+    }),
 
     # bottom border 
     html.Div(style={

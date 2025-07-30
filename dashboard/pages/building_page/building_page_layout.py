@@ -4,7 +4,7 @@ from dash import html, dcc, register_page
 from pages.building_page.filters import filters_layout
 from pages.building_page.graphs_layout import graphs_layout
 
-register_page(__name__, path_template="/<building_name>")
+register_page(__name__, path_template="building/<building_name>")
 dcc.Location(id='url', refresh=False)
 
 def layout(building_name):
@@ -14,7 +14,7 @@ def layout(building_name):
 
         # title bar with back button
         html.Div([
-            dcc.Link("← Back to Home", href='/', style={
+            dcc.Link("← Back to Home", href='/homepage', style={
                 'marginLeft': '50px',
                 'alignSelf': 'center',
                 'fontSize': '18px',
