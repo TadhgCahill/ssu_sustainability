@@ -31,24 +31,45 @@ layout = html.Div([
             'height': '100%',
             'overflowY': 'auto',
             'position': 'relative',
-            'transition': 'filter 0.3s ease',  # smooth blur effect
-            'zIndex': 9999
+            'transition': 'filter 0.3s ease'  # smooth blur effect
         }),
 
         # graphs section of main page
-        html.Div(graphs, 
-                id="graphs-section",
+        # html.Div(graphs, 
+        #         id="graphs-section",
+        #         style={
+        #             'flex' : '4',
+        #             'padding' : '10px', 
+        #             'backgroundColor' : "#20212A", 
+        #             'color' : 'white',
+        #             'minWidth': '0',
+        #             'display': 'flex',
+        #             'flexDirection': 'column',
+        #             'height': '100%',
+        #             'overflow' : 'hidden'
+        #         }),
+
+        # graphs section of main page
+        html.Div([
+            html.Div(graphs, 
+                id="graphs-section-inner",
                 style={
-                    'flex' : '4',
-                    'padding' : '10px', 
-                    'backgroundColor' : "#20212A", 
-                    'color' : 'white',
+                    'flex': '1',
+                    'padding': '10px',
+                    'backgroundColor': "#20212A",
+                    'color': 'white',
                     'minWidth': '0',
                     'display': 'flex',
                     'flexDirection': 'column',
                     'height': '100%',
-                    'overflow' : 'hidden'
-                }),
+                    'overflow': 'hidden'
+                }
+            )
+        ], id='graphs-highlight', style={
+            'flex': '4',
+            'display': 'flex',
+            'position': 'relative',
+        }),
 
         # map guide information
         html.Div([
