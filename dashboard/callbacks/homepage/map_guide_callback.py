@@ -2,10 +2,12 @@ import dash
 from dash import Output, Input, State, callback, html
 
 GUIDE_PAGES = [
-    "This is the filters section. You may use it to toggle building visibility, change the unit of energy displayed, and alter the timeframe of energy usage occurred.",
-    "GRAPHS",
-    "",
-    "Enjoy!"
+    "This is the filters section. You may toggle building visibility, change energy units, and alter the timeframes for displayed energy usage.",
+    "This is the graphs section. You will see individual energy use by building.",
+    "Click the 'Map Settings' button to toggle map styles and layers.",
+    "You may expand or minimize the sidebar using the - symbol on the top right.",
+    "To see individual building statistics, zoom in on a building and click the circular marker under the building name.",
+    "Click the information icon on the bottom left of the graph to visit this guide again."
 ]
 
 # callback to navigate guide pages with arrows
@@ -118,7 +120,7 @@ def control_guide(
     else:
         new_page = current_page
 
-    # apply dimming logic based on new_page (not current_page)
+    # now apply dimming logic based on new_page (not current_page)
     if new_page in [0, 1]:
         dim_style = visible_dim
 
