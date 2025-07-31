@@ -14,10 +14,10 @@ def layout(building_name):
 
         # title bar with back button
         html.Div([
-            dcc.Link("← Back to Home", href='/homepage', style={
+            dcc.Link("⌂", href='/homepage', style={
                 'marginLeft': '50px',
                 'alignSelf': 'center',
-                'fontSize': '18px',
+                'fontSize': '30px',
                 'color': 'white',
                 'textDecoration': 'none',
                 'cursor': 'pointer',
