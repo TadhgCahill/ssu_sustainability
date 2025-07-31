@@ -4,10 +4,11 @@ from dash import Output, Input, State, callback, html
 GUIDE_PAGES = [
     "This is the filters section. You may toggle building visibility, change energy units, and alter the timeframes for displayed energy usage.",
     "This is the graphs section. You will see individual energy use by building.",
-    "Click the 'Map Settings' button to toggle map styles and layers.",
-    "You may expand or minimize the sidebar using the - symbol on the top right.",
+    "Click the 'Map Settings' button on the top left to change map layers and style.",
+    "You may expand or minimize the sidebar using the minus symbol on the top right.",
     "To see individual building statistics, zoom in on a building and click the circular marker under the building name.",
-    "Click the information icon on the bottom left of the graph to visit this guide again."
+    "Click the information icon on the bottom left of the map to visit this guide again.",
+    "Enjoy!"
 ]
 
 # callback to navigate guide pages with arrows
@@ -67,10 +68,12 @@ def control_guide(
     hidden_welcome = {'display': 'none'}
 
     visible_guide = {
-        'position': 'absolute',
-        'bottom': '60px',
-        'left': '10px',
-        'width': '250px',
+        'position': 'fixed',
+        'textAlign' : 'center',
+        'top': '50%',
+        'left': '50%',
+        'transform': 'translate(-50%, -50%)',
+        'width': '350px',
         'padding': '15px',
         'backgroundColor': "#405D90",
         'color': 'white',
@@ -121,13 +124,13 @@ def control_guide(
         new_page = current_page
 
     # now apply dimming logic based on new_page (not current_page)
-    if new_page in [0, 1]:
+    if new_page in [0, 1, 2, 3, 4, 5]:
         dim_style = visible_dim
 
         if new_page == 0:
             filters_style.update({'filter': 'none', 'pointerEvents': 'auto', 'zIndex': 11000})
             graphs_style.update({'filter': 'brightness(0.4)', 'pointerEvents': 'none', 'zIndex': 1000})
-        elif new_page == 1:
+        elif new_page == 1 or new_page == 2 or new_page == 3 or new_page == 4 or new_page == 5:
             graphs_style.update({'filter': 'none', 'pointerEvents': 'auto', 'zIndex': 11000})
             filters_style.update({'filter': 'brightness(0.4)', 'pointerEvents': 'none', 'zIndex': 1000})
 
@@ -146,7 +149,7 @@ def control_guide(
 def display_guide_page(page_index):
     if page_index == -1:
         return ""
-    return html.P(GUIDE_PAGES[page_index], style={'marginTop': '10px'})
+    return html.P(GUIDE_PAGES[page_index], style={'marginTop': '10px', 'fontSize' : '18px'})
 
 @callback(
     Output('guide-prev', 'disabled'),
