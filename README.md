@@ -23,23 +23,23 @@ git clone <repository url>
 ### Conda Environment
 
 #### Creating Conda Environment
-''
+```
 conda ...
-'''
+```
 
 #### Running Conda Environment
-'''
+```
 conda activate ...
-'''
+```
 
 ### Running the Program
-'''
+```
 # go to dashboard directory
 cd dashboard
 
 # run program
 python index.py
-'''
+```
 
 ## License
 
