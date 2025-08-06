@@ -2,9 +2,9 @@
 - [About](#about)
       
 - [Getting Started](#getting-started)
-      - [Clone the Repo](#clone-the-repo)
-      - [Conda Environment](#conda-environment)
-      - [Running the Program](#running-the-program)
+  - [Clone the Repo](#clone-the-repo)
+  - [Conda Environment](#conda-environment)
+  - [Running the Program](#running-the-program)
     
 - [License](#license)
   
