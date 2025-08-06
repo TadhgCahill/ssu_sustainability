@@ -16,9 +16,9 @@ Welcome to the SSU Sustainability project! This project is a web application all
 ## Getting Started
 
 ### Clone the Repo
-'''
+```
 git clone <repository url>
-'''
+```
 
 ### Conda Environment
 
