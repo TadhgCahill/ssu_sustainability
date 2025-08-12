@@ -50,7 +50,7 @@ git clone <repository url>
 conda create --name conda_ssu_sustainability
 
 # install required packages
-conda install requirements.txt
+conda install --file requirements.txt
 ```
 
 #### Running Conda Environment
@@ -69,6 +69,9 @@ python index.py
 ```
 
 ## Components
+
+For a more concise view of the code, you can visit this presentation:
+https://docs.google.com/presentation/d/1ZECbjmPBeuYNdqy4fsKQqAqZW1OPveNP6wugDdyd6B8/edit?usp=sharing
 
 ### Frontend
 The frontend is built using the Dash Web Framework + Plotly to generate the graphs and maps. You will find all of the frontend components in the "dashboard" folder.
@@ -110,7 +113,7 @@ dashboard
 ```
 
 **app.py**
-This file is where the dash app is initialized. The app title can be changed here, as well as some flags like "supress callback exceptions." Keep use_pages set to True since this is a mulit page Dash App.
+This file is where the dash app is initialized. The app title can be changed here, as well as some flags like "supress callback exceptions." Keep use_pages set to True since this is a multi page Dash App.
 
 **index.py**
 Callbacks will be explained later, but this folder is where you import any callbacks you make. Your callback will NOT be found by Dash's listener if you do not import it in this file. This file is also where the app.layout is defined. 
@@ -147,6 +150,7 @@ The file geo-json-buildings.json is how we add new buildings to the map. For exa
         },
 
 # note: these coordinates are for the Green Music Center
+# coordinates must be a CLOSED polygon (start and end with the same coordinate)
 ```
 
 The coordinates can be obtained by going on google maps and right clicking "corners" of the building, and copy the point that pops up. The center lon and lat will be used by code elsewhere to place a clickable "marker" or for building names.
@@ -155,7 +159,7 @@ The coordinates can be obtained by going on google maps and right clicking "corn
 Dash callbacks are python functions that allow this app to be interactive. Dash listens for changes in component properties, for example if a checkbox is checked or unchecked in the filters section, Dash sees this and automatically runs whatever function we assigned to run. 
 This folder contains ALL of the callbacks, separated by folder corresponding to their location on the frontend. There are three main locations as of writing this, startup (the page that cycles images and facts), homepage (the main page with the map), and building page (the page you get to when clicking on a building marker on the map).
 
-The below callback is for the filters section. Based on the units and timestamp start and end dates that the user selects, (by interacting with the elements with ids timestamp-filter or unit-filter), this callback will automatically update the building locations available to the user. This is because we want the user to interact with ONLY the buildings that have data based on their selection. See callbacks/homepage/location_filter_callback.py for the entire code.
+The below callback is for the filters section. Based on the units and timestamp start and end dates that the user selects, (by interacting with the elements with ids timestamp-filter or unit-filter), this callback will automatically update the building locations available to the user. This is because we want the user to interact with ONLY the buildings that have data based on their selection. See callbacks/homepage/location_filter_callback.py for the entire block of code.
 ```
 # example callback
 
@@ -181,7 +185,7 @@ The pages folder contains the layouts for each of the three different webpages. 
 
 For the startup page, there is only one startup_layout.py folder.
 
-The homepage has the majority of the code. Homepage_layout is the "parent" to the homepage code. Here, you will find the title bar, highlights for the guided tutorial, a call to filters and graphs, the welcome mesage, and the bottom border.
+The homepage has the majority of the code. Homepage_layout is the "parent" to the homepage code. Here, you will find the title bar, highlights for the guided tutorial, a call to filters and graphs, the welcome message, and the bottom border.
 
 Here is the part that has to do with calling filters and graphs. Notice we are importing graphs and filters from graphs_layout.py and filters.py, respectively
 ```
