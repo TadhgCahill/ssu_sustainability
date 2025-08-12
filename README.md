@@ -50,7 +50,7 @@ git clone <repository url>
 conda create --name conda_ssu_sustainability
 
 # install required packages
-conda install dash pandas sqlite sqlalchemy
+conda install requirements.txt
 ```
 
 #### Running Conda Environment
