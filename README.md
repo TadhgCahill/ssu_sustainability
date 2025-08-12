@@ -19,7 +19,7 @@
 - [Acknowledgements](#acknowledgements)
 
 ## About
-Welcome to the SSU Sustainability project! This project is a web application allowing a user to see the gas and/or electric usage of various buildings in Sonoma State University.
+Welcome to the SSU Sustainability project! This project is an interactive web application allowing users to see the gas and/or electric usage of various buildings in Sonoma State University. 
 
 ### Gallery
 
@@ -73,6 +73,10 @@ python index.py
 For a more concise view of the code, you can visit this presentation:
 https://docs.google.com/presentation/d/1ZECbjmPBeuYNdqy4fsKQqAqZW1OPveNP6wugDdyd6B8/edit?usp=sharing
 
+Control Flow:
+
+
+
 ### Frontend
 The frontend is built using the Dash Web Framework + Plotly to generate the graphs and maps. You will find all of the frontend components in the "dashboard" folder.
 
@@ -112,13 +116,13 @@ dashboard
 │   │       │   startup_layout.py
 ```
 
-**app.py**
+**app.py:**
 This file is where the dash app is initialized. The app title can be changed here, as well as some flags like "supress callback exceptions." Keep use_pages set to True since this is a multi page Dash App.
 
-**index.py**
+**index.py:**
 Callbacks will be explained later, but this folder is where you import any callbacks you make. Your callback will NOT be found by Dash's listener if you do not import it in this file. This file is also where the app.layout is defined. 
 
-**assets**
+**assets folder:**
 The assets folder is the folder that Dash looks for by default for any STATIC images or files you want to add, like CSS stylesheets, javascript files, images, fonts, etc. 
 
 The file geo-json-buildings.json is how we add new buildings to the map. For example, if in the future meter data was recorded for say, Beaujolais Village, you would add a new entry to this geo-json file like the following:
@@ -155,7 +159,7 @@ The file geo-json-buildings.json is how we add new buildings to the map. For exa
 
 The coordinates can be obtained by going on google maps and right clicking "corners" of the building, and copy the point that pops up. The center lon and lat will be used by code elsewhere to place a clickable "marker" or for building names.
 
-**callbacks**
+**callbacks folder:**
 Dash callbacks are python functions that allow this app to be interactive. Dash listens for changes in component properties, for example if a checkbox is checked or unchecked in the filters section, Dash sees this and automatically runs whatever function we assigned to run. 
 This folder contains ALL of the callbacks, separated by folder corresponding to their location on the frontend. There are three main locations as of writing this, startup (the page that cycles images and facts), homepage (the main page with the map), and building page (the page you get to when clicking on a building marker on the map).
 
@@ -177,10 +181,10 @@ def update_location_options(selected_units, start_date, end_date):
     return options, values
 ```
 
-**data**
+**data folder:**
 The data folder is the main entrypoint for connecting our web app to the database. The file csv_source.py has our connection to the database, and then constants.py will load all of the possible options for locations, units, timestamp ranges, and building locations from the GeoJSON file. It also loads the options for the building page as well. If you added a building to the GeoJSON file, you would also need to add it as an option in constants.py, so the truncate_name function knows it exists. Changes to the unit options section will also be needed if new units other than Electric and Gas.
 
-**pages**
+**pages folder:**
 The pages folder contains the layouts for each of the three different webpages. The majority of this section is going to be html and css. If you wanted to add a button, this is where you will do it and assign the element an "id." This "id" then can be used as an Input(id) for any callbacks you make regarding that button.
 
 For the startup page, there is only one startup_layout.py folder.
