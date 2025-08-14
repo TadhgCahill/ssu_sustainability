@@ -228,10 +228,13 @@ Filters.py is the filters section you see to the left of the map.
 Graphs_layout.py contains three main graphs, graph1 is the map, graph2 is the top right bar graph, and graph3 is the bottom right donut graph.
 
 ### Backend
+  all our data is pulled automatically from a ftp server as csv files then downloaded to our sql database. This ensures faster recall and a safe and stable enviroment to pull and agrigate data from. 
 
 #### Database
+  our database (which is outlined in schema.sql) stores the information into two tables for the energy useage of individual buildings and for the degreeDay reports
 
 #### Data Pipeline
+all our data starts as csv files which are sent to a shared ftp server every day as a consistent time our code then automatically pulls all new data, sanitzes it for errors and pushes that sanitized data to our sql database to be recalled on startup by our frontend webpage
 
 ## License
 
