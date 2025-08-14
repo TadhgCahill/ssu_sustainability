@@ -1,4 +1,4 @@
-drop table if exists gas_usage, energy_usage;
+-- drop table if exists energy_usage, temp_daily;
 
 CREATE TABLE energy_usage (
     id INT(11) NOT NULL AUTO_INCREMENT,
@@ -11,8 +11,6 @@ CREATE TABLE energy_usage (
     INDEX (time_stamp),
     INDEX (location)
 );
-
-CREATE TABLE gas_usage LIKE energy_usage;
 
 create table temp_daily (
 	id int(11) not null auto_increment primary key,
