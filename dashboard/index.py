@@ -1,6 +1,5 @@
 from app import app
 
-# homepage callbacks
 import callbacks.homepage.main_graph_callback
 import callbacks.homepage.map_settings_callback
 import callbacks.homepage.location_filter_callback
@@ -14,6 +13,8 @@ import callbacks.building_page.main_graph_callback
 
 # page startup callback
 import callbacks.startup.cycle_image_callback
+
+import callbacks.homepage.mobile_main_graph_callback
 
 from dash import html, dcc, page_container
 
