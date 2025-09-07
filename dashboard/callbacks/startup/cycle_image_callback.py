@@ -36,12 +36,17 @@ def update_image(n):
         'overflow': 'hidden',
     }
 
-    # fact text + button under it
+   # fact text + button under it
     fact_box_children = html.Div([
         html.P(fact_text, style={'marginBottom': '30px'}),
         dcc.Link(
-            html.Button("Explore SSU Energy Use", style=dash_button_style),
+            html.Button("Desktop", style=dash_button_style),
             href='/homepage'
+        )
+        ,
+        dcc.Link(
+            html.Button("Mobile", style=dash_button_style),
+            href='/mobile_homepage'
         )
     ])
     return style, fact_box_children
